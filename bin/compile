@@ -4,6 +4,8 @@ set -e
 
 mkdir -p "$1/bin/"
 cp -a binaries-$STACK/* "$1/bin/"
+mkdir -p "$1/.profile.d"
+cp .profile.d/* "$1/.profile.d"
 show_version=$(LD_LIBRARY_PATH=$1/bin $1/bin/pdftk --version 2>&1 | tr '\n' ' ' )
 echo "-----> heroku-pdftk-buildpack: Installed to app/bin. ${show_version}"
 
